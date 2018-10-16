@@ -10,18 +10,39 @@ void setup()
 
 void draw()
 {
+  
   float n =(float)(Math.random()*200)+50;
   float r =(float)(Math.random()*200)+50;
   float m =(float)(Math.random()*200)+50;
   background(n,r,m);
+  int total = 0;
+ 
   for(int x = 100; x < 600; x += 200){
     for(int y = 100; y < 600; y+= 200){
       Die one = new Die(x, y, 50);
       one.roll();
       one.show();
+      total+= one.result;
+ 
+      
 
     }
   }
+  textSize(30);
+  fill(255);
+  text("Roll sum:" + total,0,60);
+  if (total%2 == 0){
+  total*=3000;
+  text("Money lost this time: $" + total,0,30);
+  }
+  else{
+  
+  total *= 10000;
+  text("Money lost this time: $" + total,0,30);
+  }
+  
+  
+
 }
 void mousePressed()
 {
